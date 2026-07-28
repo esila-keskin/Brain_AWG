@@ -11,19 +11,19 @@ This repository contains all analysis code and data (where distributable) for th
 
 The study derives and tests the **VEN Fatigue Hypothesis**: Von Economo neurons (VENs), optimised for fast social decisions on minimal evidence, are overactivated by gravity-disrupted social cues during spaceflight. This drives a compensatory myelination upregulation that sustains Emotion Recognition Task (ERT) speed within 6-month missions. Beyond this threshold, fatigue accumulates faster than compensation, producing selective late-inflight ERT speed decline.
 
-Seven convergent lines of evidence are tested across five independent datasets spanning cognitive, transcriptomic, proteomic, and human blood-level analyses.
-
+Eight convergent lines of evidence are tested across seven independent datasets spanning cognitive, transcriptomic, proteomic, human blood-level, and neuroimaging analyses.
 ---
 
-## Seven lines of evidence
+## Eight lines of evidence
 
-1. **ERT cognitive paradox** -- ERT speed is stable across 6-month ISS missions (N=24; +0.106 SD) but shows the largest early-to-late inflight decline of any cognitive speed domain in the 340-day NASA Twins Study (N=1; -1.8 SD; within-individual cross-domain t=11.41, df=8)
+1. **ERT cognitive paradox** -- ERT speed is stable across 6-month ISS missions (N=25; +0.106 SD) but shows the largest early-to-late inflight decline of any cognitive speed domain in the 340-day NASA Twins Study (N=1; -1.8 SD; within-individual cross-domain t=11.41, df=8)
 2. **ISS rodent myelination** -- Myelination genes are specifically upregulated in ISS frontal cortex (GSE239336; +0.381 log2FC; 3.89 SD above genome-wide null; permutation p=0.0001)
 3. **Ground analogue control** -- No specific myelination signal in OSD-202 hindlimb unloading + radiation (permutation p=0.164), with directional reversal consistent with a qualitatively distinct molecular response
 4. **Human cortical organoids** -- Layer V projection genes massively upregulated in ISS cortical organoids (GSE259421; +1.347 log2FC; 6.17 SD above null; permutation p=0.0008)
 5. **Dopaminergic organoid replication** -- Layer V signal replicates in dopaminergic (midbrain) organoids from the same mission (7.12 SD; p=0.0002), confirming the response is not cortical-lineage-specific
-6. **Proteomics (PXD069807)** -- VEN-associated structural proteins in iPSC organoid proteomics (Jourdon et al. 2026) follow global ISS trends; Layer V transcription factors fall below mass-spectrometry detection threshold as predicted
+6. **Proteomics (PXD069807)** -- VEN-associated structural proteins in iPSC organoid proteomics (Martins et al. 2026) follow global ISS trends; Layer V transcription factors fall below mass-spectrometry detection threshold as predicted
 7. **SOMA atlas human blood** -- All eight queried VEN panel genes reach p<0.05 in human astronaut blood (NASA Twins Study + Inspiration4); MOG log2FC +5.82 (p=4.59e-27) in year-long ISS, replicating in Inspiration4 PBMC (MBP log2FC +0.60)
+8. **Cosmonaut resting-state fMRI** -- Bilateral frontal insula connectivity, the VEN-containing region, is specifically altered post-flight and normalises by the 8-month follow-up in N=15 cosmonauts (NeuroVault:12152; Jillings et al. 2023), consistent with circuit-level perturbation and recovery
 
 ---
 
@@ -74,8 +74,9 @@ ven-spaceflight-cognition/
 | `GSE239336_FCT_GCvsFLT-SAL_DEanalysis.txt` | NCBI GEO: GSE239336 | ~1 MB | Included |
 | `GLDS-202_rna_seq_...csv` | NASA OSDR: OSD-202 | 134 MB | Gitignored -- download from [NASA OSDR](https://osdr.nasa.gov) |
 | `GSE259421_all_counts.txt` | NCBI GEO: GSE259421 | 45 MB | Gitignored -- download from [NCBI GEO](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE259421) |
-| `ISS_WT83_proteins.txt` / `Ground_WT83_proteins.txt` | PRIDE: PXD069807 (Jourdon et al. 2026) | varies | Gitignored -- download from [PRIDE](https://www.ebi.ac.uk/pride/archive/projects/PXD069807) |
-| SOMA atlas queries | soma.weill.cornell.edu (Overbey et al. Nature 2024) | N/A | Values extracted manually; hardcoded in `soma_analysis.py` |
+|`ISS_WT83_proteins.txt / Ground_WT83_proteins.txt` | PRIDE: PXD069807 (Martins et al. 2026) | varies | Gitignored -- download from [PRIDE](https://www.ebi.ac.uk/pride/archive/projects/PXD069807) |
+|SOMA atlas queries | soma.weill.cornell.edu (Overbey et al. Nature 2024) | N/A | Values extracted manually; hardcoded in `soma_analysis.py` |
+|NeuroVault:12152 ICC T-maps | NeuroVault collection 12152 (Jillings et al. 2023) | N/A | Reanalysed with Python/nilearn|
 
 ---
 
@@ -144,10 +145,9 @@ Statistical approach: one-sample t-tests against zero and permutation tests (N=1
 
 If you use this code or data, please cite:
 
-> Keskin E, Ali N, McNerney MW. The Social Cognition Paradox in Long-Duration Spaceflight: A VEN Fatigue Hypothesis for Duration-Dependent Emotion Recognition Decline. 2026. Preprint.
+> Keskin E, McNerney MW, Ali N. The Social Cognition Paradox in Long-Duration Spaceflight: A VEN Fatigue Hypothesis for Duration-Dependent Emotion Recognition Decline. 2026. Preprint.
 
 Related preprint (Fast Lane Hypothesis SNN model):
-
 > Keskin E. Fast Lane Hypothesis: Von Economo Neurons as a Biological Speed-Accuracy Tradeoff Mechanism. arXiv:2604.09229. 2026.
 
 ---
